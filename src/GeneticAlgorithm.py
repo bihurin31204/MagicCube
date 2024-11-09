@@ -13,7 +13,7 @@ class GeneticAlgorithm(Algorithm):
             parents = self.select_parents ()
             offspring = []
             for i in range(0, len(parents), 2):
-                parent1, parent2 = parents [i, parents [i + 1]
+                parent1, parent2 = parents [i, parents [i + 1]]
                 if (random_probability) < self.crossover_rate:
                     child1, child2 = self.crossover (parent1, parent2) # Crossover antara dua parent
                 else:
