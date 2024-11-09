@@ -8,6 +8,7 @@ class StochasticHillClimbing:
     def __init__(self, max_iterations=100000, tolerance=1):
         self.max_iterations = max_iterations
         self.tolerance = tolerance
+        self.value_history = []
 
     def generate_initial_state(self):
         numbers = list(range(1, 126))  # Angka dari 1 hingga 125
@@ -37,7 +38,8 @@ class StochasticHillClimbing:
     def search(self):
         current_state = self.generate_initial_state()
         current_value = current_state.evaluate()
-        value_history = [current_value]
+        self.value_history.append(current_value)
+        
         iterations = 0
 
         print("Initial Objective Value:", current_value)
@@ -52,15 +54,16 @@ class StochasticHillClimbing:
                 current_value = new_value
                 print(f"Iteration {iterations + 1}: Improved Objective Value = {current_value}")
 
-            value_history.append(current_value)
+            self.value_history.append(current_value)
             iterations += 1
 
-            # Hentikan jika sudah mencapai goal state
+            #print(f"State at Iteration {iterations}: {current_state.state}")
+        
             if current_state.is_goal_state():
                 break
 
-        self.plot_results(value_history)  # Visualisasi hasil
-        return current_state
+        self.plot_results(self.value_history)
+        return current_value
 
     def plot_results(self, value_history):
         plt.figure(figsize=(10, 6))

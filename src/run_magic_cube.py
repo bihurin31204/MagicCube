@@ -1,4 +1,5 @@
 from MagicCube import MagicCube
+import State
 
 # Memilih algoritma yang akan digunakan, misalnya 'st' untuk Stochastic Hill Climbing
 algorithm_choice = 'st'
