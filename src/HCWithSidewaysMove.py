@@ -1,8 +1,9 @@
 from HillClimbing import HillClimbing
 
-class SteepestAscentHC(HillClimbing):
-    def __init__(self):
+class HCWithSidewaysMove(HillClimbing):
+    def __init__(self, max_sideways_move):
         super().__init__()
+        self.max_sideways_move = max_sideways_move
     
     def select_highest_value_successor(self, successors):
         best_successor_index = 0
@@ -19,15 +20,22 @@ class SteepestAscentHC(HillClimbing):
         print(self.current_state)
         print(f'initial state value: {self.current_state.value}')
         values = [self.current_state.value]
-        while not self.current_state.is_goal_state():
+        sideways_move = 0
+        while not self.current_state.is_goal_state() and sideways_move < self.max_sideways_move:
             successors = self.generate_successors() # Hasilkan tetangga dari current state
             neighbor = self.select_highest_value_successor(successors) # Pilih tetangga terbaik
             if neighbor.value > self.current_state.value:
                 self.current_state = neighbor # Update current state
                 print(f'current state value: {self.current_state.value}')
                 values.append(self.current_state.value)
+            elif neighbor.value == self.current_state.value and sideways_move < self.max_sideways_move:
+                self.current_state = neighbor # Update current state
+                print(f'current state value: {self.current_state.value}')
+                values.append(self.current_state.value)
+                sideways_move += 1
+                print(f'sideways move remaining: {self.max_sideways_move-sideways_move}')
             else:
-                break
+                break  # Jika tidak ada perbaikan, hentikan
         print('terminate')
         print(f'final state value: {self.current_state.value}')
         return self.current_state, values
