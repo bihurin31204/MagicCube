@@ -37,7 +37,7 @@ class RandomRestartHC(HillClimbing):
                     break
             values_per_restart[restart] = values
             print(f'final state value: {self.current_state.value}')
-            print(f'ietration in this restart: {iteration_count}')
+            print(f'iteration in this restart: {iteration_count}')
             if self.current_state.is_goal_state():
                 break
         print('terminate')
