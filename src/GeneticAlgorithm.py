@@ -1,6 +1,6 @@
 import numpy as np
 import random
-from State import State
+from state import State
 
 GENES = 125
 
@@ -25,9 +25,11 @@ class GeneticAlgorithm():
         return child
     
     def mutate(self, individual):
-        point = random.randrange(GENES)
-        gene = random.randint(1, GENES)
-        individual[point] = gene
+        point1 = random.randrange(GENES)
+        point2 = random.randrange(GENES)
+        temp = individual[point1]
+        individual[point1] = individual[point2]
+        individual[point1] = temp
         return individual
     
     def get_feature_sum(self, individual):

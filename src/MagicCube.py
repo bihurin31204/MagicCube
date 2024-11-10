@@ -23,7 +23,7 @@ COOLING_RATE = 1.0
 # Genetic Algorithm
 POPULATION_SIZE = 100
 GA_MAX_ITERATION = 100
-MUTATION_RATE = 0.5
+MUTATION_RATE = 0.2
 
 class MagicCube():
     def __init__(self, alg):
