@@ -23,9 +23,11 @@ class RandomRestartHC(HillClimbing):
             print(self.current_state)
             print(f'initial state value: {self.current_state.value}')
             values = [self.current_state.value]
+            iteration_count = 0
             while not self.current_state.is_goal_state():
                 successors = self.generate_successors() # Hasilkan tetangga dari current state
                 neighbor = self.select_highest_value_successor(successors) # Pilih tetangga terbaik
+                iteration_count += 1
                 if neighbor.value > self.current_state.value:
                     self.current_state = neighbor # Update current state
                     print(f'current state value: {self.current_state.value}')
@@ -35,6 +37,7 @@ class RandomRestartHC(HillClimbing):
                     break
             values_per_restart[restart] = values
             print(f'final state value: {self.current_state.value}')
+            print(f'ietration in this restart: {iteration_count}')
             if self.current_state.is_goal_state():
                 break
         print('terminate')
