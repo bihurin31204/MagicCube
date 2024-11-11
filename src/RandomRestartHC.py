@@ -1,4 +1,4 @@
-from State import State
+from state import State
 from HillClimbing import HillClimbing
 
 class RandomRestartHC(HillClimbing):

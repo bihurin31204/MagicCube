@@ -1,4 +1,4 @@
-from State import State
+from state import State
 import random
 import numpy as np
 
@@ -29,6 +29,7 @@ class SimulatedAnnealing():
         return neighbor
 
     def search(self):
+        print(self.current_state)
         print(f'initial state value: {self.current_state.value}')
         local_optima = 0
         probs = []
