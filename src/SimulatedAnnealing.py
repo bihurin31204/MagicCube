@@ -29,6 +29,7 @@ class SimulatedAnnealing():
         return neighbor
 
     def search(self):
+        print(self.current_state)
         print(f'initial state value: {self.current_state.value}')
         local_optima = 0
         probs = []
