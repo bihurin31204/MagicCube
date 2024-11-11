@@ -41,7 +41,7 @@ class SimulatedAnnealing():
                 self.current_state = neighbor # Pindah jika lebih baik
                 print(f'current state value: {neighbor.value}')
             else:
-                random_probability = random.random()
+                random_probability = random.uniform(0,1)
                 if random_probability < np.exp(delta / self.temperature):
                     self.current_state = neighbor # Pindah dengan probabilitas
                     print(f'current state value: {neighbor.value}')

@@ -1,6 +1,6 @@
 import numpy as np
 import random
-from state import State
+from State import State
 
 GENES = 125
 
