@@ -1,4 +1,4 @@
-from state import State
+from State import State
 import numpy as np
 
 class HillClimbing():

@@ -1,6 +1,6 @@
 import numpy as np
 import random
-from state import State
+from State import State
 
 GENES = 125
 
@@ -10,6 +10,7 @@ class GeneticAlgorithm():
         self.max_iteration = max_iteration
         self.mutation_rate = mutation_rate
         self.population = np.array([np.random.choice(np.arange(1, 126), size=125, replace=False) for _ in range(self.population_size)])
+        self.current_state = State()
     
     def random_selection(self):
         fitnesses = np.array([self.fitness(individual) for individual in self.population])
@@ -102,6 +103,7 @@ class GeneticAlgorithm():
         return best_individual
     
     def search(self):
+        print(self.current_state)
         iteration = 1
         values = [self.evaluate(self.get_best_individual())]
         while not self.is_goal_state_in_population() and iteration <= self.max_iteration:
